@@ -227,19 +227,19 @@ int main(int argc, char *argv[])
 
 	pthread_t nurse_threads[nnurses];
 	for (uint i = 0; i<nnurses; i++){
-		pthread_create(&nurse_threads[i],NULL,&nurse_main,NULL);
+		thread_create(&nurse_threads[i],NULL,&nurse_main,NULL); //Usando pthread seria preciso prog. defensiva (Esta é uma fc wrapper da pthread criada pelo prof.)
 	}
 	
 	pthread_t doctor_threads[ndoctors];
 	for (uint i = 0; i<ndoctors; i++){
-		pthread_create(&doctor_threads[i],NULL,&doctor_main,NULL);
+		thread_create(&doctor_threads[i],NULL,&doctor_main,NULL);
 	}
 	
 	int args[npatients];
 	pthread_t patient_threads[npatients];
 	for (uint i = 0; i<npatients; i++){
 		args[i] = i;
-		pthread_create(&patient_threads[i],NULL,&patient_main,&args[i]);
+		thread_create(&patient_threads[i],NULL,&patient_main,&args[i]);
 	}
 	
 	for (uint i = 0; i<npatients; i++){
