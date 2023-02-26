@@ -1,5 +1,5 @@
 /*
- *  \author ...
+ *  \author 98600
  */
 
 #include "somm22.h"
@@ -11,7 +11,12 @@ namespace somm22
     {
         namespace mem
         {
-            /* ACTION POINT: Declare here your module's internal data structure */
+            AllocationPolicy politica;
+            uint32_t chunkSize;
+            uint32_t OSSize;	
+            uint32_t maxMemory;
+            std::list<BLOCK> blocosAlocados;
+            std::list<BLOCK> blocosLivres;
             
         } // end of namespace mem
 

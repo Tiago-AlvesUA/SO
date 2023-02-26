@@ -1,10 +1,11 @@
 /*
- *  \author ...
+ *  \author Nuno Vidal 98600
  */
 
 #include "somm22.h"
 #include "mem_module.h"
 
+#include <stdint.h>
 namespace somm22
 {
 
@@ -20,9 +21,19 @@ namespace somm22
             require(mSize > osSize, "memory must be bigger than the one use by OS");
             require((mSize % cSize) == 0, "memory size must be a multiple of chunck size");
             require((osSize % cSize) == 0, "memory size for OS must be a multiple of chunck size");
+	
+//            throw Exception(ENOSYS, __func__);
+            mem::chunkSize = cSize;
+            mem::politica = allocPolicy;		
+            mem::OSSize = osSize;
+            mem::BLOCK mainBlock;
+            mem::maxMemory = mSize;
+            mainBlock.pid = 0;
+            mainBlock.Addr = (uint8_t*)NULL + osSize; 
+            mainBlock.size = mSize - osSize; 
 
-            /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            mem::blocosLivres.push_back(mainBlock);
+
         }
 
 // ================================================================================== //

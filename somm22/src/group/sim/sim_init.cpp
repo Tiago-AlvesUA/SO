@@ -21,7 +21,10 @@ namespace somm22
             soProbe(501, "%s()\n", __func__);
 
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            sim::step = 0;
+            sim::time = 0;
+            sim::mask = ARRIVAL+TERMINATE;
+            // throw Exception(ENOSYS, __func__);
         }
 
 // ================================================================================== //

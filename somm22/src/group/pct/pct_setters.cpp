@@ -1,5 +1,7 @@
 /*
- *  \author ...
+ *  \author 
+    Pedro Santos
+    Gonçalo Sousa
  */
 
 #include "somm22.h"
@@ -18,21 +20,28 @@ namespace somm22
             soProbe(207, "%s(%d, %p)\n", __func__, pid, memAddr);
 
             require(pid > 0, "process ID must be non-zero");
-
+			
+			if (pct::process_table.count(pid) == 0){
+				throw Exception(EINVAL, __func__);
+			}
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            // throw Exception(ENOSYS, __func__);
+			pct::process_table[pid].memAddr=memAddr;
         }
 
-// ================================================================================== //
+// ================================================================================== //    
 
         void pctSetProcessState(uint32_t pid, ProcessState state)
         {
             soProbe(208, "%s(%d, %s)\n", __func__, pid, pctStateAsString(state));
 
             require(pid > 0, "process ID must be non-zero");
-
+			if (pct::process_table.count(pid) == 0){
+				throw Exception(EINVAL, __func__);
+			}
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            // throw Exception(ENOSYS, __func__);   
+            pct::process_table[pid].state=state;
         }
 
 // ================================================================================== //
@@ -42,9 +51,12 @@ namespace somm22
             soProbe(209, "%s(%d, %u)\n", __func__, pid, time);
 
             require(pid > 0, "process ID must be non-zero");
-
+			if (pct::process_table.count(pid) == 0){
+				throw Exception(EINVAL, __func__);
+			}
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            // throw Exception(ENOSYS, __func__);
+            pct::process_table[pid].startTime=time;
         }
 
 // ================================================================================== //

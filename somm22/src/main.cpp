@@ -132,18 +132,18 @@ int main(int argc, char *argv[])
             }
             case 'f':          // set memory allocation fit policy
             {
-                if (strcmp(optarg,"n") == 0) {
+                 /*if (strcmp(optarg,"n") == 0) {
                     fprintf(stderr, "%s: Allocation policy 'next-fit' not implemented yet.\n", progName);
                     return EXIT_FAILURE;
                 }
-                if (strcmp(optarg,"b") == 0) {
+               if (strcmp(optarg,"b") == 0) {
                     fprintf(stderr, "%s: Allocation policy 'best-fit' not implemented yet.\n", progName);
                     return EXIT_FAILURE;
                 }
                 if (strcmp(optarg,"w") == 0) {
                     fprintf(stderr, "%s: Allocation policy 'worst-fit' not implemented yet.\n", progName);
                     return EXIT_FAILURE;
-                }
+                }*/
                 if (pm.find(optarg) == pm.end()) {
                     fprintf(stderr, "%s: Fail setting memory allocation fit policy ('%s').\n", progName, optarg);
                     printUsage(progName);

@@ -1,5 +1,7 @@
 /*
- *  \author ...
+ *  \author 
+    Pedro Santos 98158
+    Gonçalo Sousa 98152
  */
 
 #include "somm22.h"
@@ -24,9 +26,9 @@ namespace somm22
         uint32_t simGetCurrentSimStep()
         {
             soProbe(504, "%s()\n", __func__);
-
+            return sim::step;
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            //throw Exception(ENOSYS, __func__);
         }
 
 // ================================================================================== //
@@ -40,9 +42,9 @@ namespace somm22
         uint32_t simGetCurrentSimTime()
         {
             soProbe(504, "%s()\n", __func__);
-
+            return sim::time;
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            //throw Exception(ENOSYS, __func__);
         }
 
 // ================================================================================== //
@@ -57,9 +59,11 @@ namespace somm22
         uint32_t simGetCurrentSimMask()
         {
             soProbe(504, "%s()\n", __func__);
-
+            return sim::mask;
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            //throw Exception(ENOSYS, __func__);
+
+            //NECESSARIO FAZER BITWISE OR(|)?
         }
 
 // ================================================================================== //

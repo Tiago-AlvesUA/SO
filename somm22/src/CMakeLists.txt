@@ -44,3 +44,29 @@ target_link_libraries(somm22
     "-Wl,--end-group"
 )
 
+
+
+set(targets
+    main2
+)
+
+foreach (target ${targets})
+    add_executable(${target} ${target}.cpp)
+    target_link_libraries(${target}
+        -static
+        "-Wl,--start-group"
+        sup
+        log
+        selector
+        binsim
+        binpct
+        binpeq
+        binmem
+        mem
+        peq
+        pct
+        sim
+        "-Wl,--end-group"
+    )
+endforeach()
+

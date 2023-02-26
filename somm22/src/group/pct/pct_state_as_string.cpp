@@ -1,5 +1,6 @@
 /*
- *  \author ...
+ *  \author 
+    Pedro Santos, Gonçalo Sousa
  */
 
 #include "somm22.h"
@@ -18,7 +19,22 @@ namespace somm22
             soProbe(291, "%s(\"%u\")\n", __func__, state);
 
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            // throw Exception(ENOSYS, __func__);
+            switch (state)
+            {
+                case TO_COME:
+                    return "TO_COME";
+                case RUNNING:
+                    return "RUNNING";
+                case SWAPPED:
+                    return "SWAPPED";
+                case FINISHED:
+                    return "FINISHED";
+                case DISCARDED:
+                    return "DISCARDED";
+                default:
+                    return "ERRO";
+                }
         }
 
 // ================================================================================== //

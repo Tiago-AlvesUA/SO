@@ -1,5 +1,6 @@
 /*
  *  \author ...
+    Tiago Santos 89356
  */
 
 #include "somm22.h"
@@ -19,8 +20,13 @@ namespace somm22
 
             require(pid > 0, "process ID must be non-zero");
 
+			if (pct::process_table.count(pid) < 0){
+				throw Exception(EINVAL, __func__);
+			}
+
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            //throw Exception(ENOSYS, __func__);
+            return pct::process_table[pid].duration;
         }
 
 // ================================================================================== //
@@ -31,8 +37,13 @@ namespace somm22
 
             require(pid > 0, "process ID must be non-zero");
 
+			if (pct::process_table.count(pid) < 0){
+				throw Exception(EINVAL, __func__);
+			}
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            //throw Exception(ENOSYS, __func__);
+            //auto it = pct::process_table.find(pid);
+            return pct::process_table[pid].addrSpaceSize;
         }
 
 // ================================================================================== //
@@ -43,8 +54,12 @@ namespace somm22
 
             require(pid > 0, "process ID must be non-zero");
 
+			if (pct::process_table.count(pid) < 0){
+				throw Exception(EINVAL, __func__);
+			}
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            //throw Exception(ENOSYS, __func__);
+	    return pct::process_table[pid].memAddr;
         }
 
 // ================================================================================== //
@@ -52,9 +67,15 @@ namespace somm22
         const char *pctGetStateName(uint32_t pid)
         {
             soProbe(210, "%s(\"%u\")\n", __func__, pid);
-
+            
+            require(pid > 0, "process ID must be non-zero");
+            
+			if (pct::process_table.count(pid) < 0){
+				throw Exception(EINVAL, __func__);
+			}
             /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+            return pctStateAsString(pct::process_table[pid].state);
+
         }
 
 // ================================================================================== //

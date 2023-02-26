@@ -1,7 +1,7 @@
 /**
  * \anchor probing
  * 
- * \defgroup probing Probing toolkit
+ * \defgroup probing Probing
  * \details This toolkit allows to selected the set of functions whose
  * probing messages should be logged/displayed
  *

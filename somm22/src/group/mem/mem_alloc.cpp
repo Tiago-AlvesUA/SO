@@ -1,5 +1,5 @@
 /*
- *  \author ...
+ *  \author Nuno VIdal
  */
 
 #include "somm22.h"
@@ -15,12 +15,31 @@ namespace somm22
 
         void *memAlloc(uint32_t pid, uint32_t size)
         {
-            soProbe(403, "%s(%u, 0x%x)\n", __func__, pid, size);
+			soProbe(403, "%s(%u, 0x%x)\n", __func__, pid, size);
 
-            require(pid > 0, "process ID must be non-zero");
+			require(pid > 0, "process ID must be non-zero");
+	
+			uint32_t resto = size % mem::chunkSize;
+			if (resto != 0)
+				size = size + mem::chunkSize - resto;
 
-            /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+			switch(mem::politica)
+			{
+				case FirstFit:
+					return memFirstFitAlloc(pid,size);
+				break;
+				case NextFit:
+					return memNextFitAlloc(pid,size);
+				break;
+				case BestFit:
+					return memBestFitAlloc(pid,size);
+				break;
+				case WorstFit:
+					return memWorstFitAlloc(pid,size);
+				break;
+				default:
+					throw Exception(EINVAL, __func__);
+		}
         }
 
 // ================================================================================== //

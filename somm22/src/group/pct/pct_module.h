@@ -17,22 +17,21 @@ namespace somm22
     
     namespace group 
     {
-
+		#define PCT_NULL_TIME 9999999
         namespace pct
         {
             /* ACTION POINT: Declare here your module's data structure as external */
-		struct PCT_T 
-		{
-			uint32_t pid;
-			uint32_t arrivalTime;
-			uint32_t duration;
-	       		uint32_t addrSpaceSize;
-			ProcessState state;
-			int32_t startTime;
-			int32_t memAddr;		
-		};
-		extern std::map<uint32_t,PCT_T>process_table;
-
+			struct PCT_T 
+			{
+				uint32_t pid;
+				uint32_t arrivalTime;
+				uint32_t duration;
+				uint32_t addrSpaceSize;
+				ProcessState state;
+				uint32_t startTime;
+				void * memAddr;		
+			};
+			extern std::map<uint32_t,PCT_T>process_table;
         } // end of namespace pct
 
     } // end of namespace group

@@ -1,5 +1,5 @@
 /*
- *  \author ...
+ *  \author Nuno Vidal 98600
  */
 
 #include "somm22.h"
@@ -16,9 +16,23 @@ namespace somm22
         const char *memAllocationPolicyAsString(AllocationPolicy policy)
         {
             soProbe(490, "%s(\"%u\")\n", __func__, policy);
-
-            /* ACTION POINT: Replace next instruction with your code */
-            throw Exception(ENOSYS, __func__);
+			switch(policy)
+			{
+				case FirstFit:
+					return "FIRST FIT";
+				break;
+				case NextFit:
+					return "NEXT FIT";
+				break;
+				case BestFit:
+					return "BEST FIT";
+				break;
+				case WorstFit:
+					return "WORST FIT";
+				break;
+				default:
+					throw Exception(EINVAL, __func__);
+			}
         }
 
 // ================================================================================== //
